@@ -1,0 +1,20 @@
+{
+    "loader": {
+        "type": "url"
+    },
+    "importer": {
+        "type": "wadl"
+    },
+    "exporter": {
+        "type": "yaml"
+    },
+    "transformer": {
+        "map": {
+            "hostHeaderInfo": {
+                "responseCode": "{{responseCode}}",
+                "responseMessage": "{{responseMessage}}"
+            },
+            "menu": "{{menu}}"
+        }
+    }
+}

@@ -1,12 +1,12 @@
-const {loaders, importers, exporters, Parser} = require('../lib')
+const {loaders, importers, exporters, Parser} = require('../lib');
+const path = require('path');
 
 let map = {
-    a: '{{foo.bar1}}',
-    b: {
-        c: '{{foo.bar2}}',
-        d: 'literal text',
-        e: 'hello {{foo.bar2}} again'
-    }
+    hostHeaderInfo: {
+        responseCode: '{{responseCode}}',
+        responseMessage: '{{responseMessage}}'
+    },
+    menu: '{{menu}}'
 };
 
 const input = {
@@ -17,13 +17,13 @@ const input = {
 };
 
 let parser = new Parser(
-    loaders.JSONLoader,
+    loaders.FileLoader,
     importers.JSONImporter,
-    exporters.JSONExporter,
+    exporters.YAMLExporter,
     map);
 
-let output = parser.parse(input);
 console.log('-----------------------------------------------');
-console.log(output);
-console.log('-----------------------------------------------');
+parser.parse(path.join(__dirname, 'assets', 'input.json'))
+// parser.parse("https://citmobile.stanbicbank.com.gh/digicoupons/api/v1/staff/menu?branch=Nungua")
+    .then(output => console.log(output));
 

@@ -1,0 +1,10 @@
+{
+  "responseCode": "000",
+  "responseMessage": "success",
+  "menu": {
+    "id": 1.0,
+    "branch": "Nungua",
+    "main": "[\"Ampesi\"]",
+    "dessert": "[\"Frui\"]"
+  }
+}
