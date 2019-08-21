@@ -1,7 +1,7 @@
-# MiniESB
-Bare-bone Enterprise Service Bus Starter Framework
+# [MiniESB](https://www.github.com/Sarps/MiniESB)
+Bare-bone Enterprise Service Bus Starter Framework - https://www.github.com/Sarps/MiniESB
 
-# Project Title
+## Project Description
 
 Just like any other Enterprise Service Bus, this framework loads raw input data from 
 multiple sources, then importers convert the raw data to a javascript object in-memory, based on the
@@ -14,7 +14,7 @@ The new javascript object is then exported to a raw text format also based on th
 format.
 
 
-## Getting Started
+#### Sample Code
 
 Clone the Repo and try this sample out.
 
@@ -101,7 +101,7 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
+* [json-to-json transformer](https://www.npmjs.com/package/json-to-json-transformer) - The transformer used
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
@@ -115,9 +115,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **Oppong-Sarpong Emmanuel** - *All the work* - [Sarps](https://github.com/Sarps)
 
 ## License
 

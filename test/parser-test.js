@@ -24,6 +24,5 @@ let parser = new Parser(
 
 console.log('-----------------------------------------------');
 parser.parse(path.join(__dirname, 'assets', 'input.json'))
-// parser.parse("https://citmobile.stanbicbank.com.gh/digicoupons/api/v1/staff/menu?branch=Nungua")
     .then(output => console.log(output));
 
