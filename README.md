@@ -60,19 +60,19 @@ The framework currently supports the following loaders and file formats.
         raw data from a url
         
 + Importers (*Imports and converts raw input data to a javascript object*)
-    - **JSON Importer** -- ```new importers.json()``` of ```new importers.JSONLoader()``` - This importer converts 
+    - **JSON Importer** -- ```new importers.json()``` or ```new importers.JSONLoader()``` - This importer converts 
     json string to a javascript object
-    - **XML Importer** -- ```new importers.xml()``` of ```new importers.XMLLoader()``` - This importer converts 
+    - **XML Importer** -- ```new importers.xml()``` or ```new importers.XMLLoader()``` - This importer converts 
     xml string to a javascript object
-    - **YAML Importer** -- ```new importers.yaml()``` of ```new importers.YAMLLoader()``` - This importer converts 
+    - **YAML Importer** -- ```new importers.yaml()``` or ```new importers.YAMLLoader()``` - This importer converts 
     yaml string to a javascript object
      
 + Exporters (*Exports and converts the javascript object to raw input data*)
-    - **JSON Exporter** -- ```new exporters.json()``` of ```new exporters.JSONLoader()``` - This exporter converts 
+    - **JSON Exporter** -- ```new exporters.json()``` or ```new exporters.JSONExporter()``` - This exporter converts 
     to json string
-    - **XML Exporter** -- ```new exporters.xml()``` of ```new exporters.XMLLoader()``` - This exporter converts 
+    - **XML Exporter** -- ```new exporters.xml()``` or ```new exporters.XMLExporter()``` - This exporter converts 
     to xml string
-    - **YAML Exporter** -- ```new exporters.yaml()``` of ```new exporters.YAMLLoader()``` - This exporter converts 
+    - **YAML Exporter** -- ```new exporters.yaml()``` or ```new exporters.YAMLExporter()``` - This exporter converts 
     to yaml string
 
 
