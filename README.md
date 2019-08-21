@@ -13,6 +13,8 @@ The framework (MiniESB) then uses a transformer map which you (the user or devel
 The new javascript object is then exported to a raw text format also based on the export
 format.
 
+##
+
 
 #### Sample Code
 
@@ -49,65 +51,53 @@ parser.parse(path.join(__dirname, 'assets', 'input.json'))
     .then(output => console.log(output));
 ```
 
+The framework currently supports the following loaders and file formats.
+
++ Loaders (*Fetches raw input data from a source*)
+    - **File Loader** -- ```new loaders.file()``` of ```new loaders.FileLoader()``` - This loader fetches 
+    raw data from a file
+    - **URL Loader** -- ```new loaders.file()``` of ```new loaders.FileLoader()``` - This loader fetches 
+        raw data from a url
+        
++ Importers (*Imports and converts raw input data to a javascript object*)
+    - **JSON Importer** -- ```new importers.json()``` of ```new importers.JSONLoader()``` - This importer converts 
+    json string to a javascript object
+    - **XML Importer** -- ```new importers.xml()``` of ```new importers.XMLLoader()``` - This importer converts 
+    xml string to a javascript object
+    - **YAML Importer** -- ```new importers.yaml()``` of ```new importers.YAMLLoader()``` - This importer converts 
+    yaml string to a javascript object
+     
++ Exporters (*Exports and converts the javascript object to raw input data*)
+    - **JSON Exporter** -- ```new exporters.json()``` of ```new exporters.JSONLoader()``` - This exporter converts 
+    to json string
+    - **XML Exporter** -- ```new exporters.xml()``` of ```new exporters.XMLLoader()``` - This exporter converts 
+    to xml string
+    - **YAML Exporter** -- ```new exporters.yaml()``` of ```new exporters.YAMLLoader()``` - This exporter converts 
+    to yaml string
+
+
 ### Prerequisites
 
-What things you need to install the software and how to install them
+This project was built and tested on these systems and versions:
 
-```
-Give examples
-```
+- NodeJS - v12.3.1
+- NPM - v6.10.3
+- MacOS *Mojave* - v10.14.6
 
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+Please notify me via mail if you are able to run it on any system and/or version other 
+than listed so that it can be added to the list. Thanks in advance.
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+Deployment section is still under development
 
 ## Built With
 
 * [json-to-json transformer](https://www.npmjs.com/package/json-to-json-transformer) - The transformer used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 
@@ -123,6 +113,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+Hat tip to anyone whose code was used
