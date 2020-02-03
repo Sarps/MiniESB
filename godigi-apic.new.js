@@ -1,8 +1,11 @@
-const {loaders, importers, exporters, Parser} = require('./lib');
+const { loaders, importers, exporters, Parser } = require('./lib');
 const converter = require('api-spec-converter');
 const transformer = require('api-spec-transformer');
 const fs = require('fs');
 const path = require('path');
+const process = require('process');
+
+process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 
 const map = {
     'swagger': '{{swagger}}',
@@ -35,7 +38,7 @@ const map = {
         'enforced': true,
         'testable': true,
         'phase': 'realized',
-        'cors': {'enabled': true},
+        'cors': { 'enabled': true },
         'assembly': {
             'execute': [
                 {
@@ -61,7 +64,7 @@ let parser = new Parser(loaders.base, importers.json, exporters.yaml, map),
     from = 'wadl', to = 'swagger_2';
 
 async function generateYAML(filename, source) {
-    const converted = await converter.convert({from, to, source});
+    const converted = await converter.convert({ from, to, source });
     map.info.title = filename;
     map.info["x-ibm-name"] = xIbmName(filename);
     return await parser.parse(converted.stringify(), {});
@@ -79,12 +82,14 @@ function fromDir(startPath, filter) {
 
 async function generateYAMLs(urls, outFolder) {
     let total = urls.length, count = 1, failed = 0;
+    outFolder = `output/${outFolder}`;
+    fs.mkdirSync(outFolder, { recursive: true });
     for (let url of urls) {
         console.log('---------------------------------------------------------------------------------------');
         try {
             console.log(` ℹ️  [${count}/${total}] FETCHING: ${url.name} -> ${url.url}`);
             let output = await generateYAML(url.name, url.url);
-            fs.writeFileSync(path.join(__dirname, `output/${outFolder}`, `${url.name}.yaml`), output);
+            fs.writeFileSync(path.join(__dirname, outFolder, `${url.name}.yaml`), output);
             console.log(`  ✅ SUCCESS `);
         } catch (e) {
             console.log(e);
@@ -95,26 +100,34 @@ async function generateYAMLs(urls, outFolder) {
     }
 }
 
-urls = fromDir('./apiconnect-wadl/uat', '.wadl').map(filename => ({
-    name: `${path.basename(filename, '.wadl')}`,
-    url: `./apiconnect-wadl/uat/${filename}`
-}));
+// urls = fromDir('./apiconnect-wadl/uat', '.wadl').map(filename => ({
+//     name: `${path.basename(filename, '.wadl')}`,
+//     url: `./apiconnect-wadl/uat/${filename}`
+// }));
 
-generateYAMLs(urls, 'uat');
+// generateYAMLs(urls, 'uat');
 
-urls = fromDir('./apiconnect-wadl/prod', '.wadl').map(filename => ({
-    name: `${path.basename(filename, '.wadl')}`,
-    url: `./apiconnect-wadl/prod/${filename}`
-}));
+// urls = fromDir('./apiconnect-wadl/prod', '.wadl').map(filename => ({
+//     name: `${path.basename(filename, '.wadl')}`,
+//     url: `./apiconnect-wadl/prod/${filename}`
+// }));
 
-generateYAMLs(urls, 'prod');
+// generateYAMLs(urls, 'prod');
 
-urls = ['AccountServices', 'APPServices', 'AuthServices', 'BankServices', 'BranchWifi', 'CollateralServices',
-    'FileServices', 'FleetManagement', 'HomeLoan', 'Moby FX', 'NotificationServices', 'PPMCadmin',
-    'RateServices', 'ServiceRequest'].map(name => ({
-    name, url: `https://citmobile.stanbicbank.com.gh/${name}/application.wadl`
-}));
+const apps = [
+    'Archiving', 'AccountServices', 'APPServices', 'AuthServices', 'BankServices', 'BranchWifi', 'CollateralServices',
+    'ComboServices', 'CovenantDiaries', 'CreditServices', 'DomesticSwift', 'FileServices', 'FleetManagement',
+    'FrontDesk', 'Gvive', 'HomeLoan', 'InitiativeForm', 'MobyCards', 'MobyCredit', 'MobyFX', 'MobyLegal', 'NotificationServices',
+    'RateServices', 'SalaryFile', 'SalaryPosting', 'ServiceRequest', 'Shortage', 'TinUpdate', 'TransactionServices',
+    'TravelImprest', 'WeatherServices', 'ServiceRequest',
+    'agencyMngtServices', 'agencyServices', 'eva', 'evaUsers', 'revenueTracker', 'urlservice'],
+    
+    envs = [{ outDir: 'prd', url: 'https://ghprdgodigisrv1.gh.sbicdirectory.com:7102' },
+    { outDir: 'uat', url: 'https://ghuatgodigisrv1.gh.sbicdirectory.com:9982' }]
 
-generateYAMLs(urls, '');
+envs.forEach(env => {
+    urls = apps.map(name => ({ name, url: `${env.url}/${name}/application.wadl`}));
+    generateYAMLs(urls, env.outDir);
+});
 
 
