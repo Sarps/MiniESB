@@ -1,0 +1,186 @@
+{
+	"info": {
+		"_postman_id": "a7050514-d8b1-49a6-9b54-f8a9b2547744",
+		"name": "TransactionServices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Echo Test",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://ghuatgodigisrv1.gh.sbicdirectory.com:7102/TransactionServices/services/echotest",
+					"protocol": "https",
+					"host": [
+						"ghuatgodigisrv1",
+						"gh",
+						"sbicdirectory",
+						"com"
+					],
+					"port": "7102",
+					"path": [
+						"TransactionServices",
+						"services",
+						"echotest"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Domestic Posting",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "sourceCode",
+						"value": "Moby Cash",
+						"type": "text"
+					},
+					{
+						"key": "countryCode",
+						"value": "GH",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"hostHeaderInfo\":{\r\n      \"requestId\":\"SHS12324\",\r\n      \"ipAddress\":\"127.0.0.1\",\r\n      \"sourceChannelId\":\"WEB\"\r\n   },\r\n   \"postTransferInfo\":{\r\n      \"debitAccount\":\"9040002416365\",\r\n      \"creditAccount\":\"9040005449043\",\r\n      \"amount\":\"1\",\r\n      \"currency\":\"GHS\",\r\n      \"narration1\":\"GO Digi Test 1\",\r\n      \"narration2\":\"GO Digi Test 2\",\r\n      \"comments\":\"Go Digi Test\"\r\n   }\r\n}\r\n"
+				},
+				"url": {
+					"raw": "https://ghuatgodigisrv1.gh.sbicdirectory.com:7102/TransactionServices/services/addtransaction",
+					"protocol": "https",
+					"host": [
+						"ghuatgodigisrv1",
+						"gh",
+						"sbicdirectory",
+						"com"
+					],
+					"port": "7102",
+					"path": [
+						"TransactionServices",
+						"services",
+						"addtransaction"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Transactions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://ghuatgodigisrv1.gh.sbicdirectory.com:7102/TransactionServices/services/gettransactions?endDate=30-AUG-2019",
+					"protocol": "https",
+					"host": [
+						"ghuatgodigisrv1",
+						"gh",
+						"sbicdirectory",
+						"com"
+					],
+					"port": "7102",
+					"path": [
+						"TransactionServices",
+						"services",
+						"gettransactions"
+					],
+					"query": [
+						{
+							"key": "startDate",
+							"value": "28-AUG-2019",
+							"disabled": true
+						},
+						{
+							"key": "endDate",
+							"value": "30-AUG-2019"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Transactions By ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://ghuatgodigisrv1.gh.sbicdirectory.com:7102/TransactionServices/services/gettransaction?id=SBG66614",
+					"protocol": "https",
+					"host": [
+						"ghuatgodigisrv1",
+						"gh",
+						"sbicdirectory",
+						"com"
+					],
+					"port": "7102",
+					"path": [
+						"TransactionServices",
+						"services",
+						"gettransaction"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "SBG66614"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
