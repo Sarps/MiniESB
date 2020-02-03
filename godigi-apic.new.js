@@ -92,7 +92,7 @@ async function generateYAMLs(urls, outFolder) {
             fs.writeFileSync(path.join(__dirname, outFolder, `${url.name}.yaml`), output);
             console.log(`  ✅ SUCCESS `);
         } catch (e) {
-            console.log(e);
+            console.log(e.statusCode);
             failed++;
             console.log(`  ❌ ERROR   ==> (failed): ${failed}/${count}`);
         }
